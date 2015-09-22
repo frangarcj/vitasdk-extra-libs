@@ -29,8 +29,7 @@ PING_LOOP_PID=$!
 # your_build_command_1 >> $BUILD_OUTPUT 2>&1
 # your_build_command_2 >> $BUILD_OUTPUT 2>&1
 make -C vita2dlib/libvita2d all install >> $BUILD_OUTPUT 2>&1
-cp vita2dlib/libvita2d/libvita2d.a $(PREFIX)/lib
-cp vita2dlib/libvita2d/include/vita2d.h $(PREFIX)/include
+
 # The build finished without returning an error so dump a tail of the output
 dump_output
 

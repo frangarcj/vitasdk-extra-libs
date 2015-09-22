@@ -11,6 +11,8 @@ script:
  - ./build-vita_portlibs.sh
  - git clone https://github.com/xerpi/vita2dlib
  - ./build-vita2dlib.sh
+ - cp vita2dlib/libvita2d/libvita2d.a $PREFIX/lib
+ - cp vita2dlib/libvita2d/include/vita2d.h $PREFIX/include
  - ls -rls $PREFIX
 env:
  global:
