@@ -13,7 +13,7 @@ script:
  - ./build-vita2dlib.sh
  - cp vita2dlib/libvita2d/libvita2d.a $PREFIX/lib
  - cp vita2dlib/libvita2d/include/vita2d.h $PREFIX/include
- - tar -zcvf vita-extra-libs.tar.gz $PREFIX/*
+ - tar -zcvf vita-extra-libs.tar.gz -C $PREFIX .
 env:
  global:
   - TOP=$PWD
