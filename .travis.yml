@@ -13,27 +13,26 @@ script:
  - ./build-vita2dlib.sh
  - cp vita2dlib/libvita2d/libvita2d.a $PREFIX/lib
  - cp vita2dlib/libvita2d/include/vita2d.h $PREFIX/include
- - ls -rls $PREFIX
+ - tar -zcvf vita-extra-libs.tar.gz $PREFIX/*
 env:
  global:
   - TOP=$PWD
   - PREFIX=$TOP/dist
-# before_deploy:
-#   - git config --global user.email "builds@travis-ci.com"
-#   - git config --global user.name "Travis CI"
-#   - export GIT_TAG=$TRAVIS_BRANCH-$TRAVIS_OS_NAME-0.1-v$TRAVIS_BUILD_NUMBER
-#   - git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER - $TRAVIS_OS_NAME"
-#   - git push -q https://$TAGPERM@github.com/frangarcj/vitasdk-buildscripts --tags
-# deploy:
-#   provider: releases
-#   api_key: $OAUTH
-#   file_glob: true
-#   file: "pkg/*.tar.bz2"
-#   skip_cleanup: true
-#   on:
-#     tags: false
-#     all_branches: true
-#
-# branches:
-#   except:
-#     - /^*-v[0-9]/
+before_deploy:
+  - git config --global user.email "builds@travis-ci.com"
+  - git config --global user.name "Travis CI"
+  - export GIT_TAG=$TRAVIS_BRANCH-0.1-v$TRAVIS_BUILD_NUMBER
+  - git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER - $TRAVIS_OS_NAME"
+  - git push -q https://$TAGPERM@github.com/frangarcj/vitasdk-buildscripts --tags
+deploy:
+  provider: releases
+  api_key: $OAUTH
+  file: "vita-extra-libs.tar.gz"
+  skip_cleanup: true
+  on:
+    tags: false
+    all_branches: true
+
+branches:
+  except:
+    - /^*-v[0-9]/
