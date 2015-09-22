@@ -9,7 +9,9 @@ script:
  - git clone https://github.com/xerpi/vita_portlibs
  - chmod +x *.sh
  - ./build-vita_portlibs.sh
- - ls -ls $(PREFIX)
+ - git clone https://github.com/xerpi/vita2dlib
+ - ./build-vita2dlib.sh
+ - ls -rls $PREFIX
 env:
  global:
   - TOP=$PWD
