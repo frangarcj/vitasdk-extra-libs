@@ -3,7 +3,7 @@ os:
 
 script:
  - curl https://api.github.com/repos/frangarcj/vitasdk-buildscripts/releases  | grep browser_download_url | grep linux | head -n 1 | cut -d '"' -f 4 | xargs wget
- - tar xjf gcc-arm-vita-eabi-4_9-2015q3-20150922-linux.tar.bz2
+ - tar xjf *.tar.bz2
  - export VITASDK=$PWD/gcc-arm-vita-eabi-4_9-2015q3
  - export PATH="$PATH:$VITASDK/bin"
  - git clone https://github.com/xerpi/vita_portlibs
